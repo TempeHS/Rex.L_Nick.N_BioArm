@@ -14,40 +14,47 @@ servo 5 pin 7
 5x Servo Motors
 1x 4-Digit Display
 */
-
 #include "Ultrasonic.h"
 #include <Servo.h>
 
+// Create an ultrasonic sensor object on pin 6
 Ultrasonic distanceSensor(6);
 
-
+// Create servo objects for three servos
+Servo servo1;  
+Servo servo2;  
+Servo servo3;  
 
 void setup() {
   Serial.begin(9600);
-  Servo servo1;  // create servo object for servo on pin 5
-  Servo servo2;  // create servo object for servo on pin 4
-  Servo servo3;  // create servo object for servo on pin 3
-  servo1.attach(5);  // attaches the servo on pin 5 to the servo object
-  servo2.attach(4);  // attaches the servo on pin 4 to the servo object
-  servo3.attach(3);  // attaches the servo on pin 3 to the servo object
+ 
+  // Attach servos to specific pins
+  servo1.attach(5);  
+  servo2.attach(4);  
+  servo3.attach(3);  
 }
 
 void loop() {
-  int Range;
-  Range = distanceSensor.distanceRead();
+  // Read the distance from the ultrasonic sensor
+  long Range = distanceSensor.read(); // Get the distance in cm
+ 
+  // Print the distance to the Serial Monitor
   Serial.print(Range);
   Serial.println(" cm");
 
-  if (Range <10) { 
-    servo1.write(90);  // move servo1 to 90 degrees
-    servo2.write(90);  // move servo2 to 90 degrees
-    servo3.write(90);  // move servo3 to 90 degrees
-  } else { // Button is not pressed
-    servo1.write(0);   // move servo1 back to 0 degrees
-    servo2.write(0);   // move servo2 back to 0 degrees
-    servo3.write(0);   // move servo3 back to 0 degrees
+  // If the distance is less than or equal to 10 cm, set the servos to 90 degrees
+  if (Range <= 10) {
+    servo1.write(90);  // Move servo1 to 90 degrees
+    servo2.write(90);  // Move servo2 to 90 degrees
+    servo3.write(90);  // Move servo3 to 90 degrees
+  }
+  else {
+    // If the distance is greater than 10 cm, return the servos to their normal position (0 degrees)
+    servo1.write(0);   // Move servo1 back to 0 degrees
+    servo2.write(0);   // Move servo2 back to 0 degrees
+    servo3.write(0);   // Move servo3 back to 0 degrees
   }
 
-  // Small delay to debounce the button
-  delay(10);
+  // Small delay for better stability and to reduce the frequency of sensor readings
+  delay(100);
 }
