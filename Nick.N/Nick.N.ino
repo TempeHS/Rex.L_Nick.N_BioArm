@@ -1,24 +1,37 @@
+
 #include <Servo.h>
 
-Servo myservo;  // create servo object to control a servo
-// twelve servo objects can be created on most boards
+Servo servo1;  // create servo object for servo on pin 5
+Servo servo2;  // create servo object for servo on pin 4
+Servo servo3;  // create servo object for servo on pin 3
 
-int pos = 0;    // variable to store the servo position
+const int buttonPin = 8; // pin connected to the button
+int buttonState = 0;     // variable to store the button state
 
 void setup() {
-  myservo.attach(5);  // attaches the servo on pin 5 to the servo object
-   myservo.attach(4);  // attaches the servo on pin 4 to the servo object
-    myservo.attach(3);  // attaches the servo on pin 3 to the servo object
+  // Attach servos to their respective pins
+  servo1.attach(5);
+  servo2.attach(4);
+  servo3.attach(3);
+
+  // Set button pin as input
+  pinMode(buttonPin, INPUT);
 }
 
 void loop() {
-  for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
-    // in steps of 1 degree
-    myservo.write(pos);              // tell servo to go to position in variable 'pos'
-    delay(15);                       // waits 15ms for the servo to reach the position
+  // Read the state of the button
+  buttonState = digitalRead(buttonPin);
+
+  if (buttonState == HIGH) { // Button is pressed
+    servo1.write(90);  // move servo1 to 90 degrees
+    servo2.write(90);  // move servo2 to 90 degrees
+    servo3.write(90);  // move servo3 to 90 degrees
+  } else { // Button is not pressed
+    servo1.write(0);   // move servo1 back to 0 degrees
+    servo2.write(0);   // move servo2 back to 0 degrees
+    servo3.write(0);   // move servo3 back to 0 degrees
   }
-  for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
-    myservo.write(pos);              // tell servo to go to position in variable 'pos'
-    delay(15);                       // waits 15ms for the servo to reach the position
-  }
+
+  // Small delay to debounce the button
+  delay(10);
 }
