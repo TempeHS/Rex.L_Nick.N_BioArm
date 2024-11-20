@@ -27,6 +27,7 @@ Servo servo3;
 
 void setup() {
   Serial.begin(9600);
+<<<<<<< HEAD
  
   // Attach servos to specific pins
   servo1.attach(5);  
@@ -53,6 +54,30 @@ void loop() {
     servo1.write(0);   // Move servo1 back to 0 degrees
     servo2.write(0);   // Move servo2 back to 0 degrees
     servo3.write(0);   // Move servo3 back to 0 degrees
+=======
+  Servo servo1;  // create servo object for servo on pin 5
+  Servo servo2;  // create servo object for servo on pin 4
+  Servo servo3;  // create servo object for servo on pin 3
+  servo1                         .attach(5);  // attaches the servo on pin 5 to the servo object
+  servo2.attach(4);  // attaches the servo on pin 4 to the servo object
+  servo3.attach(3);  // attaches the servo on pin 3 to the servo object
+}
+
+void loop() {
+  unsigned int Range;
+  Range = distanceSensor.distanceRead();
+  Serial.print(Range);
+  Serial.println(" cm");
+
+  if (Range <=10) { 
+    servo1.write(90);  // move servo1 to 90 degrees
+    servo2.write(90);  // move servo2 to 90 degrees
+    servo3.write(90);  // move servo3 to 90 degrees
+  } else { // Button is not pressed
+    servo1.write(0);   // move servo1 back to 0 degrees
+    servo2.write(0);   // move servo2 back to 0 degrees
+    servo3.write(0);   // move servo3 back to 0 degrees
+>>>>>>> 95c3e31f3bf091e31751166c64c66218e51d374c
   }
 
   // Small delay for better stability and to reduce the frequency of sensor readings
