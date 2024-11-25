@@ -3,12 +3,9 @@
 Ultrasonic distanceSensor(6);
 
 void setup() {
-  Serial.begin(9600);
+  sensorsetup();
 }
 
 void loop() {
-  int Range;
-  Range = distanceSensor.distanceRead();
-  Serial.print(Range);
-  Serial.println(" cm");
+  sensorRead();
 }
