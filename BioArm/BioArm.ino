@@ -1,6 +1,6 @@
 /*Rex:
 Doc: https://github.com/TempeHS/TempeHS_Ardunio_Boilerplate/tree/main/TempeHS_Sensor_Catalogue/Sensor_Kit/Ultrasonic_Ranger
-Ultra pin 1
+Ultra pin 6
 Digit Display pin 2
 
 Nick:
@@ -14,6 +14,7 @@ servo 5 pin 7
 5x Servo Motors
 1x 4-Digit Display
 */
+
 #include "Ultrasonic.h"
 #include <Servo.h>
 
@@ -26,19 +27,15 @@ Servo servo2;
 Servo servo3;  
 
 void setup() {
-  Serial.begin(9600);
- 
-  // Attach servos to specific pins
+  sensorsetup(); //Ultrasonic Setup
+  
   servo1.attach(5);  
   servo2.attach(4);  
   servo3.attach(3);  
 }
 
 void loop() {
-  // Read the distance from the ultrasonic sensor
-  long Range = distanceSensor.read(); // Get the distance in cm
- 
-  // Print the distance to the Serial Monitor
+  long Range = distanceSensor.read(); //Reads distance
   Serial.print(Range);
   Serial.println(" cm");
 
