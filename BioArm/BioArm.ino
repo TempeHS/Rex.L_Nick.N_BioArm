@@ -18,17 +18,17 @@ servo 5 pin 7
 #include "Ultrasonic.h"
 #include <Servo.h>
 
-// Create an ultrasonic sensor object on pin 6
+// Links ultrasonic sensor to pin 6
 Ultrasonic distanceSensor(6);
 
-// Create servo objects for three servos
+// Declares all 3 servos
 Servo servo1;  
 Servo servo2;  
 Servo servo3;  
 
 void setup() {
-  sensorsetup(); //Ultrasonic Setup
-  
+  sensorSetup(); //Ultrasonic Setup
+
   servo1.attach(5);  
   servo2.attach(4);  
   servo3.attach(3);  
@@ -46,12 +46,11 @@ void loop() {
     servo3.write(90);  // Move servo3 to 90 degrees
   }
   else {
-    // If the distance is greater than 10 cm, return the servos to their normal position (0 degrees)
-    servo1.write(0);   // Move servo1 back to 0 degrees
-    servo2.write(0);   // Move servo2 back to 0 degrees
-    servo3.write(0);   // Move servo3 back to 0 degrees
+    // If the distance is greater than 10 cm, return the servos to 0 degrees
+    servo1.write(0);
+    servo2.write(0);
+    servo3.write(0);
   }
 
-  // Small delay for better stability and to reduce the frequency of sensor readings
   delay(100);
 }

@@ -6,11 +6,10 @@ void attachsetup() {
 }
 
 void servorotations (){
-
     servo1.write(90);  // move servo1 to 90 degrees
     servo2.write(90);  // move servo2 to 90 degrees
     servo3.write(90);  // move servo3 to 90 degrees
-  } else { // Button is not pressed
+  } else { 
     servo1.write(0);   // move servo1 back to 0 degrees
     servo2.write(0);   // move servo2 back to 0 degrees
     servo3.write(0);   // move servo3 back to 0 degrees
