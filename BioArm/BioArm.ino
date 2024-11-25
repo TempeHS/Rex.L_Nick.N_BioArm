@@ -27,16 +27,8 @@ Servo servo2;
 Servo servo3;  
 
 void setup() {
-<<<<<<< HEAD
   sensorsetup (); //Ultrasonic Setup
   attachsetup (); 
-=======
-  sensorSetup(); //Ultrasonic Setup
-
-  servo1.attach(5);  
-  servo2.attach(4);  
-  servo3.attach(3);  
->>>>>>> 48fe15a14f69ae1e46eb2e403454fd97b6ee8a28
 }
 
 void loop() {
@@ -44,21 +36,19 @@ void loop() {
   Serial.print(Range);
   Serial.println(" cm");
 
-<<<<<<< HEAD
   servorotations();
-=======
+
   // If the distance is less than or equal to 10 cm, set the servos to 90 degrees
   if (Range <= 10) {
-    servo1.write(90);  // Move servo1 to 90 degrees
-    servo2.write(90);  // Move servo2 to 90 degrees
-    servo3.write(90);  // Move servo3 to 90 degrees
+    servo1.write(90);  
+    servo2.write(90);  
+    servo3.write(90);  
   }
   else {
     // If the distance is greater than 10 cm, return the servos to 0 degrees
     servo1.write(0);
     servo2.write(0);
     servo3.write(0);
->>>>>>> 48fe15a14f69ae1e46eb2e403454fd97b6ee8a28
   }
 
   delay(100);
