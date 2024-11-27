@@ -18,23 +18,25 @@ void setup() {
 }
 
 void loop() {
-
-  if (Range <= 5) {
-
+  sensorRead();
+  int Range;
+  Range = sensorRead;
   
-  delay(100); // Small delay for stability
-  long Range = distanceSensor.read(); // Reads distance from ultrasonic sensor
-  Serial.print(Range);
-  Serial.println(" cm");
-
-    if (Range >= 5) {
+  if (Range <= 5) {
+  armhalfclose();
+  }
+  else {
+    armopen();
+  }
+  if (Range <= 3) {
     armclose();
   }
-
+  else {
+    armclose();
+  }
   if (Range >= 5) {
     armopen();
   }
-  servorotations(Range); // Pass range to the servo function
-  
-  delay(100); // Small delay for stability
+
+  delay(100); // Small delay 
 }
