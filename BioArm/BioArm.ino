@@ -18,7 +18,16 @@ void setup() {
 }
 
 void loop() {
+
   if (Range <= 5) {
+
+  
+  delay(100); // Small delay for stability
+  long Range = distanceSensor.read(); // Reads distance from ultrasonic sensor
+  Serial.print(Range);
+  Serial.println(" cm");
+
+    if (Range >= 5) {
     armclose();
   }
 

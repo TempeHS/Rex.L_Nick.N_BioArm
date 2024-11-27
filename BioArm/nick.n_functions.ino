@@ -11,6 +11,12 @@ void armclose() {
     servo3.write(0);   // Move servo3 back to 0 degrees
 }
 
+void armhalfclose() {
+    servo1.write(45);   // Move servo1 back to 0 degrees
+    servo2.write(45);   // Move servo2 back to 0 degrees
+    servo3.write(45);   // Move servo3 back to 0 degrees
+}
+
 void armopen() {
     servo1.write(90);  // Move servo1 to 90 degrees
     servo2.write(90);  // Move servo2 to 90 degrees
