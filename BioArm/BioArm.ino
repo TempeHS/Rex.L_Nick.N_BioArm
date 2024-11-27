@@ -15,17 +15,24 @@ Servo servo3;
 void setup() {
   Serial.begin(9600); // Initialize serial communication for debugging
   
-  attachsetup(); // Initialize servo attachments
+  servosetup(); // Initialize servo attachments
 }
 
 
 void loop() {
-  long Range = distanceSensor.read(); // Reads distance from ultrasonic sensor
-  Serial.print(Range);
-  Serial.println(" cm");
+  
 
+  if (Range <=5) {
+    armclose();
+  }
 
+  if (Range >=5) {
+    armopen();
+  }
   servorotations(Range); // Pass range to the servo function
   
   delay(100); // Small delay for stability
+  long Range = distanceSensor.read(); // Reads distance from ultrasonic sensor
+  Serial.print(Range);
+  Serial.println(" cm");
 }
