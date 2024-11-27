@@ -1,4 +1,4 @@
-void sensorSetup() {
+void sensorsetup() {
   Serial.begin(9600);
 }
 
