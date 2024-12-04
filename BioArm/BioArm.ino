@@ -10,7 +10,7 @@ int Range;
 
 void setup() {
   sensorsetup();
-  servosetup(); 
+  servosetup();
 }
 
 void loop() {
@@ -24,5 +24,5 @@ void loop() {
     armopen();
   }
 
-  delay(100); // Small delay
+  delay(100);
 }
