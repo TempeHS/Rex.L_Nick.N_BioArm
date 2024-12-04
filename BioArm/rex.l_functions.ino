@@ -3,10 +3,9 @@ void sensorsetup() {
 }
 
 void sensorRead() {
-  int Range;
+  
   Range = distanceSensor.distanceRead();
   Serial.print(Range);
   Serial.println(" cm");
-  return Range;
 }
 
