@@ -23,13 +23,3 @@ void armopen() {
     servo3.write(90);  
 }
 
-
-
-
-
-
-
-
-
-
-
