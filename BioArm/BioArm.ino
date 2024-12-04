@@ -6,6 +6,8 @@ Ultrasonic distanceSensor(6);
 Servo servo1;  
 Servo servo2;  
 Servo servo3;  
+Servo servo4; 
+Servo servo5; 
 int Range;
 
 void setup() {
