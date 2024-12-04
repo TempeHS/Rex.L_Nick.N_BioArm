@@ -16,7 +16,7 @@ void setup() {
 void loop() {
   sensorRead();
 
-  if (Range <= 3) {
+  if (Range <= 2) {
     armclose();
   } else if (Range <= 5) {
     armhalfclose();
